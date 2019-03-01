@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 4331c011e83a4434b85219e62269a470
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Daydreamers
+  fontNames:
+  - Daydreamers
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: b541fc2391a4d4156b413b1ab41ed110, type: 3}
+  - {fileID: 12800000, guid: 3b1416ca95bda448c8c6125fad6313e4, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
