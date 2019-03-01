@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-  Color dayColor = Color.red;
-  Color nightColor = Color.blue;
+  Color dayColor = new Color(1f, 0.2470588f, 0.2039216f, 1f);
+  Color nightColor = new Color(0.05882353f, 0.7372549f, 0.9764706f, 1f);
   Renderer rend;
 
   void Start()
