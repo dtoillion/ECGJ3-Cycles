@@ -54,8 +54,14 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\_Scripts\Enemy.cs" />
+     <Compile Include="Assets\_Scripts\EnemyOrbit.cs" />
+     <Compile Include="Assets\_Scripts\GameController.cs" />
      <Compile Include="Assets\_Scripts\MusicManager.cs" />
+     <Compile Include="Assets\_Scripts\PlayerController.cs" />
+     <Compile Include="Assets\_Scripts\Rotate.cs" />
      <Compile Include="Assets\_Scripts\Slider.cs" />
+     <None Include="Assets\Art\sheet_black2x.xml" />
+     <None Include="Assets\Art\sheet_white2x.xml" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>/Users/danieltoillion/code/Unity/ECGJ3_Cycles/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
