@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-  Color dayColor = new Color(1f, 0.2470588f, 0.2039216f, 1f);
-  Color nightColor = new Color(0.05882353f, 0.7372549f, 0.9764706f, 1f);
+  Color nightColor = new Color(1f, 0.2470588f, 0.2039216f, 1f);
+  Color dayColor = new Color(0.01960784f, 0.7686275f, 0.4196078f, 1f);
   Renderer rend;
 
   void Start()
@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     rend = GetComponent<Renderer> ();
   }
 
-  void OnTriggerEnter(Collider other)
+  void OnTriggerStay(Collider other)
   {
     if (other.gameObject.tag == "NightTime")
       rend.material.color = nightColor;
