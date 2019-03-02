@@ -53,8 +53,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\_Scripts\Enemy.cs" />
+     <Compile Include="Assets\_Scripts\EnemyOrbit.cs" />
+     <Compile Include="Assets\_Scripts\GameController.cs" />
      <Compile Include="Assets\_Scripts\MusicManager.cs" />
+     <Compile Include="Assets\_Scripts\PlayerController.cs" />
+     <Compile Include="Assets\_Scripts\Rotate.cs" />
      <Compile Include="Assets\_Scripts\Slider.cs" />
+     <None Include="Assets\Art\sheet_black2x.xml" />
+     <None Include="Assets\Art\sheet_white2x.xml" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>/Users/danieltoillion/code/Unity/ECGJ3_Cycles/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
@@ -631,6 +638,10 @@
  <Reference Include="mscorlib">
  <HintPath>/Applications/Unity/Hub/Editor/2018.3.0f2/Unity.app/Contents/NetStandard/compat/2.0.0/shims/netfx/mscorlib.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{8908FC8E-B2F1-A05E-BF60-E835DEA93BA5}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
