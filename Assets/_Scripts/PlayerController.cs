@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
   private Rigidbody rb;
   public bool Nightime = false;
+  private int moveCount = 0;
 
   void Awake()
   {
@@ -14,12 +15,14 @@ public class PlayerController : MonoBehaviour
 
   void Update()
   {
-    if(Input.GetKeyDown("up"))
+    if(Input.GetKeyDown("up") && (moveCount <= 5))
     {
+      moveCount += 1;
       transform.Translate(0f, 0f, 3f);
     }
-    if(Input.GetKeyDown("down"))
+    if(Input.GetKeyDown("down") && (moveCount > 0))
     {
+      moveCount -= 1;
       transform.Translate(0f, 0f, -3f);
     }
   }
@@ -33,8 +36,6 @@ public class PlayerController : MonoBehaviour
         Destroy(other.gameObject);
       }
     }
-  }
-  void OnTriggerStay(Collider other) {
     if(other.gameObject.tag == "NightTime")
       Nightime = true;
     if(other.gameObject.tag == "DayTime")
