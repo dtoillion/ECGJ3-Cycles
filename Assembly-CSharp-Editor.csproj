@@ -53,6 +53,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\SimpleSpectrum\Scripts\Editor\OutputVolumeEditor.cs" />
+     <Compile Include="Assets\SimpleSpectrum\Scripts\Editor\SimpleSpectrumEditor.cs" />
      <Compile Include="Assets\TextureAtlasSlicer\Editor\TextureAtlasSlicer.cs" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>/Users/danieltoillion/code/Unity/ECGJ3_Cycles/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

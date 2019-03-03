@@ -53,15 +53,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\_Scripts\DayNightColorSwitcher.cs" />
      <Compile Include="Assets\_Scripts\Enemy.cs" />
      <Compile Include="Assets\_Scripts\EnemyOrbit.cs" />
      <Compile Include="Assets\_Scripts\GameController.cs" />
      <Compile Include="Assets\_Scripts\MusicManager.cs" />
      <Compile Include="Assets\_Scripts\PlayerController.cs" />
+     <Compile Include="Assets\_Scripts\PlayerOrbit.cs" />
      <Compile Include="Assets\_Scripts\Rotate.cs" />
      <Compile Include="Assets\_Scripts\Slider.cs" />
+     <Compile Include="Assets\SimpleSpectrum\Demos\Demo Assets\SoundFileOpener.cs" />
+     <Compile Include="Assets\SimpleSpectrum\Scripts\OutputVolume.cs" />
+     <Compile Include="Assets\SimpleSpectrum\Scripts\SimpleSpectrum.cs" />
+     <Compile Include="Assets\SimpleSpectrum\Scripts\SSWebInteract.cs" />
+     <None Include="Assets\SimpleSpectrum\SimpleSpectrum_DOCUMENTATION.txt" />
      <None Include="Assets\Art\sheet_black2x.xml" />
+     <None Include="Assets\SimpleSpectrum\SimpleSpectrum_Changelog.txt" />
+     <None Include="Assets\SimpleSpectrum\Misc\lightweightGradientLerpSprite.shader" />
+     <None Include="Assets\SimpleSpectrum\Misc\lightweightGradientLerp.shader" />
+     <None Include="Assets\SimpleSpectrum\Misc\SurfaceGradientLerp.shader" />
+     <None Include="Assets\SimpleSpectrum\Scripts\WebGLInject.txt" />
      <None Include="Assets\Art\sheet_white2x.xml" />
+     <None Include="Assets\SimpleSpectrum\Demos\Music credit to Vexento - Check out his stuff!.txt" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>/Users/danieltoillion/code/Unity/ECGJ3_Cycles/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
