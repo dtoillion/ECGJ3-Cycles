@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 498}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -45,7 +45,7 @@ MonoBehaviour:
     y: 0
     width: 2560
     height: 1396
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 498}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
 MonoBehaviour:
@@ -114,7 +114,7 @@ MonoBehaviour:
   m_MinSize: {x: 917, y: 448}
   m_MaxSize: {x: 22012, y: 14048}
   vertical: 0
-  controlID: 21797
+  controlID: 2046
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 448}
   m_MaxSize: {x: 4002, y: 8048}
   vertical: 1
-  controlID: 21798
+  controlID: 2047
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -219,7 +219,7 @@ MonoBehaviour:
   m_MinSize: {x: 715, y: 398}
   m_MaxSize: {x: 18010, y: 14048}
   vertical: 1
-  controlID: 21771
+  controlID: 2104
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_MinSize: {x: 715, y: 274}
   m_MaxSize: {x: 18010, y: 10024}
   vertical: 0
-  controlID: 21772
+  controlID: 2105
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -269,7 +269,7 @@ MonoBehaviour:
   m_MinSize: {x: 483, y: 224}
   m_MaxSize: {x: 8008, y: 4024}
   vertical: 0
-  controlID: 21773
+  controlID: 2106
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -289,8 +289,8 @@ MonoBehaviour:
     y: 0
     width: 352
     height: 1092
-  m_MinSize: {x: 204, y: 224}
-  m_MaxSize: {x: 4004, y: 4024}
+  m_MinSize: {x: 202, y: 224}
+  m_MaxSize: {x: 4002, y: 4024}
   m_ActualView: {fileID: 21}
   m_Panes:
   - {fileID: 21}
@@ -400,7 +400,7 @@ MonoBehaviour:
     width: 1189
     height: 723
   m_PersistentViewDataDictionary: {fileID: 0}
-  m_MaximizeOnPlay: 0
+  m_MaximizeOnPlay: 1
   m_Gizmos: 0
   m_Stats: 0
   m_SelectedSizes: 07000000000000000000000000000000000000000000000000000000000000000000000000000000
@@ -617,7 +617,7 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_MixersTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 660d0000
+    m_SelectedIDs: 
     m_LastClickedID: 3430
     m_ExpandedIDs: 12eb343c
     m_RenameOverlay:
@@ -738,7 +738,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 1c78feff3aa7feff48b0feff08b4feff6ab4feff1cfbfeff7c64ffff58b6ffffeeb7ffff66b8ffffccb9ffffc2d3ffff36dcffffd6efffffd4fbffffde0f0000e20f0000
+      m_ExpandedIDs: d4fbffffa4170000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -825,8 +825,7 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SearchFilter:
     m_NameFilter: 
-    m_ClassNames:
-    - AudioClip
+    m_ClassNames: []
     m_AssetLabels: []
     m_AssetBundleNames: []
     m_VersionControlStates: []
@@ -834,22 +833,22 @@ MonoBehaviour:
     m_ReferencingInstanceIDs: 
     m_SceneHandles: 
     m_ShowAllHits: 0
-    m_SearchArea: 3
+    m_SearchArea: 1
     m_Folders:
-    - Assets/Sound/SFX- The Ultimate 2017 16 bit Mini pack/Roar
+    - Assets/_Prefabs
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Sound/SFX- The Ultimate 2017 16 bit Mini pack/Roar
+  - Assets/_Prefabs
   m_LastFoldersGridSize: 16
   m_LastProjectPath: /Users/danieltoillion/code/Unity/ECGJ3_Cycles
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: cc090100
-    m_LastClickedID: 68044
-    m_ExpandedIDs: 000000005e0a0000b80a0000320c00006e08010082080100b20801003c0a01004c0a010000ca9a3b
+    m_SelectedIDs: 240f0000
+    m_LastClickedID: 3876
+    m_ExpandedIDs: 00000000680a0000240b0000e00d0000100e0000960e0000ce0e000084150000a415000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -877,7 +876,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000005e0a0000b80a0000400b000000ca9a3b
+    m_ExpandedIDs: 00000000680a0000240b0000e00d0000100e0000960e0000ce0e000084150000a415000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -904,7 +903,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: d2faffff0000000030c00000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
