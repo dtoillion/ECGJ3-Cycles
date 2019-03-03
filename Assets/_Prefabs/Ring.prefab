@@ -151,6 +151,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb2880aa5aabf49838dd0dbbdf394f69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nightColor: {r: 1, g: 0.24705882, b: 0.20392157, a: 1}
+  dayColor: {r: 0.019607844, g: 0.76862746, b: 0.41960785, a: 1}
 --- !u!54 &1503808423058373976
 Rigidbody:
   m_ObjectHideFlags: 0
