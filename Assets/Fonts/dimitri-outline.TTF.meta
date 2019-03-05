@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3b1416ca95bda448c8c6125fad6313e4
+guid: 3005d8f96a85d4b348374ee646c85bb8
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,9 +8,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Daydreamers
+  fontName: Dimitri Swank
   fontNames:
-  - Daydreamers
+  - Dimitri Swank
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

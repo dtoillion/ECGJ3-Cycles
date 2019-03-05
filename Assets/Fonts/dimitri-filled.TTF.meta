@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 98581668690094a0f8d8c5f50b6540b9
+guid: 010d94d0b9fc34162971148e9869f467
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,9 +8,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: cityburn
+  fontName: Dimitri
   fontNames:
-  - cityburn
+  - Dimitri
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
