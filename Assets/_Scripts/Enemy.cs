@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     rend = GetComponent<Renderer> ();
   }
 
-  void OnTriggerEnter(Collider other)
+  void OnTriggerStay(Collider other)
   {
     if (other.gameObject.tag == "NightTime")
       rend.material.color = nightColor;
