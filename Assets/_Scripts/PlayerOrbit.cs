@@ -7,9 +7,10 @@ public class PlayerOrbit : MonoBehaviour
   public float Speed;
   private bool CooledDown = true;
 
-  void Awake()
+  void Start()
   {
     CooledDown = true;
+    GameController.control.ReverseText.text = "Reverse Ready";
   }
 
   void FixedUpdate()
@@ -37,13 +38,13 @@ public class PlayerOrbit : MonoBehaviour
 
   IEnumerator RotateDirectionCooldown()
   {
-    Debug.Log("Three");
+    GameController.control.ReverseText.text = "3";
     yield return new WaitForSeconds(1f);
-    Debug.Log("Two");
+    GameController.control.ReverseText.text = "2";
     yield return new WaitForSeconds(1f);
-    Debug.Log("One");
+    GameController.control.ReverseText.text = "1";
     yield return new WaitForSeconds(1f);
-    Debug.Log("Cooled down");
+    GameController.control.ReverseText.text = "Reverse Ready";
     CooledDown = true;
     StopCoroutine(RotateDirectionCooldown());
   }

@@ -19,7 +19,7 @@ public class EnemyOrbit : MonoBehaviour
     float DistanceFromCenter = numSteps * 3f;
     Enemy.transform.Translate(0f, 0f, DistanceFromCenter, Space.Self);
     Speed = Random.Range(0.1f, 2f);
-    SpeedModifier = Random.Range(-1f, 1f);
+    SpeedModifier = Random.Range(0.5f, 1f);
   }
 
   void FixedUpdate()

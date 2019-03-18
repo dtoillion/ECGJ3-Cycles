@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
   public Text HealthText;
   public Text OrbsText;
   public Text StageText;
+  public Text ReverseText;
 
   public GameObject GameOverScreen;
   public GameObject GameWinScreen;
