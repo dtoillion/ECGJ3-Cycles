@@ -13,9 +13,8 @@ public class GameController : MonoBehaviour
 
   public GameObject GameOverScreen;
   public GameObject GameWinScreen;
-  public GameObject Ring;
+  public GameObject Enemy;
   public GameObject Player;
-  private GameObject ObjectToDelete;
 
   public float Orbs = 0f;
   public float Stage = 1f;
@@ -24,7 +23,6 @@ public class GameController : MonoBehaviour
 
   void Awake() {
     control = this;
-    Time.timeScale = 1f;
     StartCoroutine(SpawnRings());
   }
 
@@ -54,12 +52,10 @@ public class GameController : MonoBehaviour
 
   public void GameOver() {
     GameOverScreen.SetActive(true);
-    Time.timeScale = 0f;
   }
 
   public void GameWin() {
     GameWinScreen.SetActive(true);
-    Time.timeScale = 0f;
   }
 
   public void Retry() {
@@ -68,9 +64,9 @@ public class GameController : MonoBehaviour
   }
 
   IEnumerator SpawnRings() {
-    yield return new WaitForSeconds(1f);
+    yield return new WaitForSeconds(2f);
     for (int i = 0; i < Stage; i++) {
-      Instantiate(Ring, transform.position, transform.rotation);
+      Instantiate(Enemy, transform.position, transform.rotation);
       yield return new WaitForSeconds(1.5f);
     }
   }

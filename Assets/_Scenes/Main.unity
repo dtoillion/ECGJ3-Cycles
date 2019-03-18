@@ -876,7 +876,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 250, y: -0}
+  m_AnchoredPosition: {x: 250, y: 0}
   m_SizeDelta: {x: 500, y: 133}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &650792851
@@ -2156,12 +2156,12 @@ MonoBehaviour:
   StageText: {fileID: 272129168}
   GameOverScreen: {fileID: 417973941}
   GameWinScreen: {fileID: 325940737}
-  Ring: {fileID: 1503808423045713346, guid: 6948fdbc68a5e4d0cb060b9f6be72cc4, type: 3}
+  Enemy: {fileID: 1503808423045713346, guid: 6948fdbc68a5e4d0cb060b9f6be72cc4, type: 3}
   Player: {fileID: 3656587979564030081, guid: d0363576862744a22a08bb1f0ccf3528, type: 3}
   Orbs: 0
   Stage: 1
   Health: 3
-  StagesToWin: 3
+  StagesToWin: 10
 --- !u!1 &1766926262
 GameObject:
   m_ObjectHideFlags: 0
