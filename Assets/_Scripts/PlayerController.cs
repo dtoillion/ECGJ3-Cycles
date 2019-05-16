@@ -24,11 +24,13 @@ public class PlayerController : MonoBehaviour
     if(Input.GetKeyDown("up") && (moveCount <= 3))
     {
       moveCount += 1;
+      SoundEffectsManager.soundControl.PlayerUpSound();
       transform.Translate(0f, 0f, 3f);
     }
     if(Input.GetKeyDown("down") && (moveCount > 0))
     {
       moveCount -= 1;
+      SoundEffectsManager.soundControl.PlayerDownSound();
       transform.Translate(0f, 0f, -3f);
     }
   }
@@ -37,8 +39,10 @@ public class PlayerController : MonoBehaviour
     if(other.gameObject.tag == "Enemy") {
       if(Nightime) {
         GameController.control.Health -= 1f;
+        SoundEffectsManager.soundControl.PlayerHitSound();
       } else {
         GameController.control.Orbs += 1f;
+        SoundEffectsManager.soundControl.CollectOrbSound();
         Destroy(other.gameObject);
       }
     }

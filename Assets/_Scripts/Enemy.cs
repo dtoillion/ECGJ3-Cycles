@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
     sC = GetComponent<Collider> ();
     sC.enabled = false;
     Dangerous = false;
+    SoundEffectsManager.soundControl.SpawnSound();
     StartCoroutine(SpawnSafe());
   }
 

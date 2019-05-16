@@ -10,7 +10,6 @@ public class EnemyOrbit : MonoBehaviour
   private float MinDistanceFromCenter = 6f;
   private float DistanceFromCenter;
   private float Speed;
-  private float SpeedModifier;
 
   void Start()
   {
@@ -19,11 +18,10 @@ public class EnemyOrbit : MonoBehaviour
     float DistanceFromCenter = numSteps * 3f;
     Enemy.transform.Translate(0f, 0f, DistanceFromCenter, Space.Self);
     Speed = Random.Range(0.1f, 2f);
-    SpeedModifier = Random.Range(0.5f, 1f);
   }
 
   void FixedUpdate()
   {
-    transform.Rotate(0f, Speed * SpeedModifier, 0f, Space.Self);
+    transform.Rotate(0f, Speed, 0f, Space.Self);
   }
 }

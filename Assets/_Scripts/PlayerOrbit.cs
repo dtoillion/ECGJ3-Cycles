@@ -9,6 +9,7 @@ public class PlayerOrbit : MonoBehaviour
 
   void Start()
   {
+    SoundEffectsManager.soundControl.SpawnSound();
     CooledDown = true;
     GameController.control.ReverseText.text = "Reverse Ready";
   }
@@ -30,9 +31,12 @@ public class PlayerOrbit : MonoBehaviour
   {
     if(CooledDown)
     {
+      SoundEffectsManager.soundControl.ReverseSound();
       CooledDown = false;
       Speed = Speed * -1;
       StartCoroutine(RotateDirectionCooldown());
+    } else {
+      SoundEffectsManager.soundControl.CoolDownSound();
     }
   }
 

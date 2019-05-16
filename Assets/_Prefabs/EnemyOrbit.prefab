@@ -152,8 +152,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nightColor: {r: 1, g: 0.7254902, b: 0.24705884, a: 1}
   dayColor: {r: 0.11764706, g: 0.15294118, b: 0.18039216, a: 1}
-  spawnColorA: {r: 1, g: 0.24705882, b: 0.20392157, a: 1}
-  spawnColorB: {r: 0.8235294, g: 0.85490197, b: 0.8862745, a: 1}
+  spawnColorA: {r: 0.7735849, g: 0.55939704, b: 0.18609823, a: 0.69803923}
+  spawnColorB: {r: 0.254717, g: 0.18857218, b: 0.073291205, a: 0.69803923}
   Dangerous: 0
 --- !u!54 &1503808423058373976
 Rigidbody:

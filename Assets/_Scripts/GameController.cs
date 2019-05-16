@@ -22,23 +22,44 @@ public class GameController : MonoBehaviour
   public float Health = 3f;
   public float StagesToWin = 10f;
 
-  void Awake() {
-    control = this;
-    StartCoroutine(SpawnRings());
-  }
+  public bool GameStarted = false;
 
-  void Start() {
-    Instantiate(Player, transform.position, transform.rotation);
+  void Awake() {
+    StartCoroutine(SetupGame());
   }
 
   void FixedUpdate() {
-    OrbsText.text = "Orbs: " + Orbs + " of " + Stage;
-    StageText.text = "Stage: " + Stage + " of " + StagesToWin;
-    HealthText.text = "Health: " + Health;
+    if(GameStarted) {
+      OrbsText.text = "Orbs: " + Orbs + " of " + Stage;
+      StageText.text = "Stage: " + Stage + " of " + StagesToWin;
+      HealthText.text = "Health: " + Health;
+    }
     if(Orbs == Stage)
       AdvanceStage();
-    if(Health == 0)
+    if((Health == 0) && (GameStarted)){
       GameOver();
+    }
+  }
+
+  IEnumerator SetupGame() {
+    control = this;
+    GameController.control.ReverseText.text = "Space to reverse";
+    OrbsText.text = "Orbs: " + Orbs + " of " + Stage;
+    HealthText.text = "Health: " + Health;
+    StageText.text = "Ready?";
+    yield return new WaitForSeconds(2f);
+    StageText.text = "3";
+    yield return new WaitForSeconds(1f);
+    StageText.text = "2";
+    yield return new WaitForSeconds(1f);
+    StageText.text = "1";
+    yield return new WaitForSeconds(1f);
+    StageText.text = "Go!";
+    Instantiate(Player, transform.position, transform.rotation);
+    yield return new WaitForSeconds(1f);
+    GameStarted = true;
+    StartCoroutine(SpawnRings());
+    StopCoroutine(SetupGame());
   }
 
   void AdvanceStage() {
@@ -52,7 +73,10 @@ public class GameController : MonoBehaviour
   }
 
   public void GameOver() {
+    GameStarted = false;
     GameOverScreen.SetActive(true);
+    SoundEffectsManager.soundControl.GameOverSound();
+    Time.timeScale = 0;
   }
 
   public void GameWin() {
@@ -62,10 +86,11 @@ public class GameController : MonoBehaviour
   public void Retry() {
     GameOverScreen.SetActive(false);
     SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+    Time.timeScale = 1;
   }
 
   IEnumerator SpawnRings() {
-    yield return new WaitForSeconds(2f);
+    yield return new WaitForSeconds(3f);
     for (int i = 0; i < Stage; i++) {
       Instantiate(Enemy, transform.position, transform.rotation);
       yield return new WaitForSeconds(1.5f);
