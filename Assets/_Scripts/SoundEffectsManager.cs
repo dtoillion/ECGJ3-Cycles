@@ -4,47 +4,51 @@ using UnityEngine;
 
 public class SoundEffectsManager : MonoBehaviour
 {
-  AudioSource audio;
+  AudioSource audioSrc;
   public AudioClip[] audioClips;
   public static SoundEffectsManager soundControl;
 
   void Start()
   {
     soundControl = this;
-    audio = GetComponent<AudioSource>();
+    audioSrc = GetComponent<AudioSource>();
   }
 
   public void GameOverSound(){
-    audio.clip = audioClips[0];
-    audio.Play();
+    audioSrc.clip = audioClips[0];
+    audioSrc.Play();
   }
   public void PlayerHitSound(){
-    audio.clip = audioClips[1];
-    audio.Play();
+    audioSrc.clip = audioClips[1];
+    audioSrc.Play();
   }
   public void CollectOrbSound(){
-    audio.clip = audioClips[2];
-    audio.Play();
+    audioSrc.clip = audioClips[2];
+    audioSrc.Play();
   }
   public void ReverseSound(){
-    audio.clip = audioClips[3];
-    audio.Play();
+    audioSrc.clip = audioClips[3];
+    audioSrc.Play();
   }
   public void PlayerUpSound(){
-    audio.clip = audioClips[4];
-    audio.Play();
+    audioSrc.clip = audioClips[4];
+    audioSrc.Play();
   }
   public void PlayerDownSound(){
-    audio.clip = audioClips[5];
-    audio.Play();
+    audioSrc.clip = audioClips[5];
+    audioSrc.Play();
   }
   public void CoolDownSound(){
-    audio.clip = audioClips[6];
-    audio.Play();
+    audioSrc.clip = audioClips[6];
+    audioSrc.Play();
   }
   public void SpawnSound(){
-    audio.clip = audioClips[7];
-    audio.Play();
+    audioSrc.clip = audioClips[7];
+    audioSrc.Play();
+  }
+  public void PauseSound(){
+    audioSrc.clip = audioClips[8];
+    audioSrc.Play();
   }
 
 }

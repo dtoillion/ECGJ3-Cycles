@@ -6,12 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-  public static GameController control;
+  public static GameController control = null;
   public Text HealthText;
   public Text OrbsText;
   public Text StageText;
   public Text ReverseText;
 
+  public GameObject MainMenuScreen;
   public GameObject GameOverScreen;
   public GameObject GameWinScreen;
   public GameObject Enemy;
@@ -23,9 +24,19 @@ public class GameController : MonoBehaviour
   public float StagesToWin = 10f;
 
   public bool GameStarted = false;
+  public bool Paused = false;
 
   void Awake() {
+    control = this;
     StartCoroutine(SetupGame());
+  }
+
+  void Update()
+  {
+    if(Input.GetKeyDown("escape"))
+    {
+      PauseGame();
+    }
   }
 
   void FixedUpdate() {
@@ -42,22 +53,16 @@ public class GameController : MonoBehaviour
   }
 
   IEnumerator SetupGame() {
-    control = this;
     GameController.control.ReverseText.text = "Space to reverse";
     OrbsText.text = "Orbs: " + Orbs + " of " + Stage;
     HealthText.text = "Health: " + Health;
-    StageText.text = "Ready?";
+    StageText.text = "";
+    yield return new WaitForSeconds(1f);
+    StageText.text = "Get Ready!";
     yield return new WaitForSeconds(2f);
-    StageText.text = "3";
-    yield return new WaitForSeconds(1f);
-    StageText.text = "2";
-    yield return new WaitForSeconds(1f);
-    StageText.text = "1";
-    yield return new WaitForSeconds(1f);
-    StageText.text = "Go!";
-    Instantiate(Player, transform.position, transform.rotation);
-    yield return new WaitForSeconds(1f);
     GameStarted = true;
+    Instantiate(Player, transform.position, transform.rotation);
+    yield return new WaitForSeconds(0.5f);
     StartCoroutine(SpawnRings());
     StopCoroutine(SetupGame());
   }
@@ -72,6 +77,21 @@ public class GameController : MonoBehaviour
     }
   }
 
+  public void PauseGame()
+  {
+    if(!GameController.control.Paused) {
+      GameController.control.Paused = true;
+      Time.timeScale = 0;
+      SoundEffectsManager.soundControl.PauseSound();
+      MainMenuScreen.SetActive(true);
+    } else {
+      GameController.control.Paused = false;
+      Time.timeScale = 1;
+      SoundEffectsManager.soundControl.PauseSound();
+      MainMenuScreen.SetActive(false);
+    }
+  }
+
   public void GameOver() {
     GameStarted = false;
     GameOverScreen.SetActive(true);
@@ -81,6 +101,7 @@ public class GameController : MonoBehaviour
 
   public void GameWin() {
     GameWinScreen.SetActive(true);
+    Time.timeScale = 0;
   }
 
   public void Retry() {
@@ -90,7 +111,6 @@ public class GameController : MonoBehaviour
   }
 
   IEnumerator SpawnRings() {
-    yield return new WaitForSeconds(3f);
     for (int i = 0; i < Stage; i++) {
       Instantiate(Enemy, transform.position, transform.rotation);
       yield return new WaitForSeconds(1.5f);

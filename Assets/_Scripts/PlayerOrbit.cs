@@ -21,7 +21,7 @@ public class PlayerOrbit : MonoBehaviour
 
   void Update()
   {
-    if(Input.GetKeyDown("space"))
+    if(Input.GetKeyDown("space") && (!GameController.control.Paused))
     {
       RotateDirection();
     }
