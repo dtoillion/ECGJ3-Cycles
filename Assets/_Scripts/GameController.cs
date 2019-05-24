@@ -11,10 +11,12 @@ public class GameController : MonoBehaviour
   public Text OrbsText;
   public Text StageText;
   public Text ReverseText;
+  public Text GameOverScoreText;
 
   public GameObject MainMenuScreen;
   public GameObject GameOverScreen;
   public GameObject GameWinScreen;
+  public GameObject GameStartScreen;
   public GameObject Enemy;
   public GameObject Player;
 
@@ -25,15 +27,15 @@ public class GameController : MonoBehaviour
 
   public bool GameStarted = false;
   public bool Paused = false;
+  public bool Infinite = false;
 
   void Awake() {
     control = this;
-    StartCoroutine(SetupGame());
   }
 
   void Update()
   {
-    if(Input.GetKeyDown("escape"))
+    if(Input.GetKeyDown("escape") && (GameStarted))
     {
       PauseGame();
     }
@@ -42,7 +44,11 @@ public class GameController : MonoBehaviour
   void FixedUpdate() {
     if(GameStarted) {
       OrbsText.text = "Orbs: " + Orbs + " of " + Stage;
-      StageText.text = "Stage: " + Stage + " of " + StagesToWin;
+      if(Infinite) {
+        StageText.text = "Stage: " + Stage;
+      } else {
+        StageText.text = "Stage: " + Stage + " of " + StagesToWin;
+      }
       HealthText.text = "Health: " + Health;
     }
     if(Orbs == Stage)
@@ -68,7 +74,7 @@ public class GameController : MonoBehaviour
   }
 
   void AdvanceStage() {
-    if(Stage == StagesToWin) {
+    if((Stage == StagesToWin) && (!Infinite)) {
       GameWin();
     } else {
       Stage += 1f;
@@ -92,9 +98,23 @@ public class GameController : MonoBehaviour
     }
   }
 
+  public void GameStartInfinite() {
+    GameStartScreen.SetActive(false);
+    Infinite = true;
+    SoundEffectsManager.soundControl.PauseSound();
+    StartCoroutine(SetupGame());
+
+  }
+  public void GameStartNormal() {
+    GameStartScreen.SetActive(false);
+    SoundEffectsManager.soundControl.PauseSound();
+    StartCoroutine(SetupGame());
+  }
+
   public void GameOver() {
     GameStarted = false;
     GameOverScreen.SetActive(true);
+    GameOverScoreText.text = "Score: " + Stage;
     SoundEffectsManager.soundControl.GameOverSound();
     Time.timeScale = 0;
   }
@@ -112,8 +132,9 @@ public class GameController : MonoBehaviour
 
   IEnumerator SpawnRings() {
     for (int i = 0; i < Stage; i++) {
-      Instantiate(Enemy, transform.position, transform.rotation);
       yield return new WaitForSeconds(1.5f);
+      Instantiate(Enemy, transform.position, transform.rotation);
+      yield return new WaitForSeconds(0.5f);
     }
   }
 }
