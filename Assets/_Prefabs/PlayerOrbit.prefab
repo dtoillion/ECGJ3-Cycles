@@ -267,7 +267,9 @@ MonoBehaviour:
   Nightime: 0
   nightColor: {r: 1, g: 0.7254902, b: 0.24705884, a: 1}
   dayColor: {r: 0.11764706, g: 0.15294118, b: 0.18039216, a: 1}
-  PlayerExplosion: {fileID: 662300002699070742, guid: 3f08cd94cb365464b97c20e0777afb78,
+  PlayerHitEffects: {fileID: 662300002699070742, guid: e0cce9e3782a249d2ae876fec6b1b62b,
+    type: 3}
+  OrbCollectedEffects: {fileID: 662300002699070742, guid: 3f08cd94cb365464b97c20e0777afb78,
     type: 3}
 --- !u!54 &3656587979795057796
 Rigidbody:

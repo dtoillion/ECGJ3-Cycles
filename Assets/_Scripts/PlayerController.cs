@@ -11,7 +11,8 @@ public class PlayerController : MonoBehaviour
   public Color nightColor;
   public Color dayColor;
 
-  public GameObject PlayerExplosion;
+  public GameObject PlayerHitEffects;
+  public GameObject OrbCollectedEffects;
 
   Renderer rend;
 
@@ -42,15 +43,21 @@ public class PlayerController : MonoBehaviour
       if(Nightime) {
         GameController.control.Health -= 1f;
         SoundEffectsManager.soundControl.PlayerHitSound();
-        CameraShake.Shake(0.25f, 1f);
+        Instantiate(PlayerHitEffects, transform.position, Quaternion.identity);
+        CameraShake.Shake(0.75f, 1.2f);
       } else {
         GameController.control.Orbs += 1f;
         SoundEffectsManager.soundControl.CollectOrbSound();
-        Instantiate(PlayerExplosion, transform.position, Quaternion.identity);
+        Instantiate(OrbCollectedEffects, transform.position, Quaternion.identity);
+        CameraShake.Shake(0.2f, 0.4f);
         Destroy(other.transform.parent.gameObject);
       }
     }
+    if((other.gameObject.tag == "NightTime") || (other.gameObject.tag == "DayTime")) {
+      StartCoroutine(Pulse());
+    }
   }
+
   void OnTriggerStay(Collider other) {
     if(other.gameObject.tag == "NightTime") {
       rend.material.color = nightColor;
@@ -60,6 +67,13 @@ public class PlayerController : MonoBehaviour
       rend.material.color = dayColor;
       Nightime = false;
     }
+  }
+
+  IEnumerator Pulse() {
+    transform.localScale += new Vector3(0f, 0f, 1f);
+    yield return new WaitForSeconds(0.1f);
+    transform.localScale -= new Vector3(0f, 0f, 1f);
+    StopCoroutine(Pulse());
   }
 
 }

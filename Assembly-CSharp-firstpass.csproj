@@ -330,15 +330,6 @@
  <Reference Include="Unity.Locator">
  <HintPath>/Applications/Unity/Hub/Editor/2019.1.3f1/Unity.app/Contents/Managed/Unity.Locator.dll</HintPath>
  </Reference>
- <Reference Include="com.unity.multiplayer-hlapi.Editor">
- <HintPath>/Users/danieltoillion/code/Unity/ECGJ3-Cycles/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
- </Reference>
- <Reference Include="com.unity.multiplayer-weaver.Editor">
- <HintPath>/Users/danieltoillion/code/Unity/ECGJ3-Cycles/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
- </Reference>
- <Reference Include="com.unity.multiplayer-hlapi.Runtime">
- <HintPath>/Users/danieltoillion/code/Unity/ECGJ3-Cycles/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Hub/Editor/2019.1.3f1/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
