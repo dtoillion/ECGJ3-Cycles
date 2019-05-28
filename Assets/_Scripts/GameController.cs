@@ -77,6 +77,7 @@ public class GameController : MonoBehaviour
     if((Stage == StagesToWin) && (!Infinite)) {
       GameWin();
     } else {
+      SoundEffectsManager.soundControl.StageClearedSound();
       Stage += 1f;
       Orbs = 0f;
       StartCoroutine(SpawnRings());
@@ -120,6 +121,7 @@ public class GameController : MonoBehaviour
   }
 
   public void GameWin() {
+    GameStarted = false;
     GameWinScreen.SetActive(true);
     Time.timeScale = 0;
   }

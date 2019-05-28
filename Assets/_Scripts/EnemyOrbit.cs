@@ -6,8 +6,8 @@ public class EnemyOrbit : MonoBehaviour
 {
   public GameObject Enemy;
 
-  private float MaxDistanceFromCenter = 15f;
-  private float MinDistanceFromCenter = 6f;
+  private float MaxDistanceFromCenter = 18f;
+  private float MinDistanceFromCenter = 3f;
   private float DistanceFromCenter;
   private float Speed;
 

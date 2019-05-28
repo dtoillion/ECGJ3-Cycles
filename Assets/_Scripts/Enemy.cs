@@ -22,6 +22,13 @@ public class Enemy : MonoBehaviour
     StartCoroutine(SpawnSafe());
   }
 
+  IEnumerator DangerCooldown() {
+    sC.enabled = false;
+    yield return new WaitForSeconds(1f);
+    sC.enabled = true;
+    StopCoroutine(DangerCooldown());
+  }
+
   IEnumerator SpawnSafe()
   {
     rend.material.color = spawnColorA;
@@ -39,12 +46,28 @@ public class Enemy : MonoBehaviour
     StopCoroutine(SpawnSafe());
   }
 
+  void OnTriggerEnter(Collider other) {
+    if((other.gameObject.tag == "Player") && (Dangerous)) {
+      StartCoroutine(DangerCooldown());
+    }
+    if((other.gameObject.tag == "NightTime") || (other.gameObject.tag == "DayTime")) {
+      StartCoroutine(Pulse());
+    }
+  }
+
   void OnTriggerStay(Collider other)
   {
     if ((other.gameObject.tag == "NightTime") && (Dangerous))
       rend.material.color = nightColor;
     if ((other.gameObject.tag == "DayTime") && (Dangerous))
       rend.material.color = dayColor;
+  }
+
+  IEnumerator Pulse() {
+    transform.localScale += new Vector3(0f, 0f, 1f);
+    yield return new WaitForSeconds(0.1f);
+    transform.localScale -= new Vector3(0f, 0f, 1f);
+    StopCoroutine(Pulse());
   }
 
 }
