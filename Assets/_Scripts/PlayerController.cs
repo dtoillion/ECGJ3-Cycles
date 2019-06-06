@@ -22,6 +22,11 @@ public class PlayerController : MonoBehaviour
     rend = GetComponent<Renderer> ();
   }
 
+  void Start()
+  {
+    rend.material.color = nightColor;
+  }
+
   void Update()
   {
     if(Input.GetKeyDown("up") && (moveCount <= 3) && (!GameController.control.Paused))
@@ -53,9 +58,6 @@ public class PlayerController : MonoBehaviour
         Destroy(other.transform.parent.gameObject);
       }
     }
-    if((other.gameObject.tag == "NightTime") || (other.gameObject.tag == "DayTime")) {
-      StartCoroutine(Pulse());
-    }
   }
 
   void OnTriggerStay(Collider other) {
@@ -67,13 +69,6 @@ public class PlayerController : MonoBehaviour
       rend.material.color = dayColor;
       Nightime = false;
     }
-  }
-
-  IEnumerator Pulse() {
-    transform.localScale += new Vector3(0f, 0f, 1f);
-    yield return new WaitForSeconds(0.1f);
-    transform.localScale -= new Vector3(0f, 0f, 1f);
-    StopCoroutine(Pulse());
   }
 
 }

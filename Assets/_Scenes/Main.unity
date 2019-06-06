@@ -1788,6 +1788,21 @@ PrefabInstance:
       propertyPath: barMinYScale
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 114217642484435290, guid: 3787256bfa6f0e44b9def35b7764354e,
+        type: 3}
+      propertyPath: frequencyLimitHigh
+      value: 22049.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 114217642484435290, guid: 3787256bfa6f0e44b9def35b7764354e,
+        type: 3}
+      propertyPath: sourceType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114217642484435290, guid: 3787256bfa6f0e44b9def35b7764354e,
+        type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 193514858}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3787256bfa6f0e44b9def35b7764354e, type: 3}
 --- !u!1 &824420315
