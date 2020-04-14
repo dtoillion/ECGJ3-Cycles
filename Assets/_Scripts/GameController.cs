@@ -15,7 +15,6 @@ public class GameController : MonoBehaviour
 
   public GameObject MainMenuScreen;
   public GameObject GameOverScreen;
-  public GameObject GameWinScreen;
   public GameObject GameStartScreen;
   public GameObject Enemy;
   public GameObject Player;
@@ -23,37 +22,35 @@ public class GameController : MonoBehaviour
   public float Orbs = 0f;
   public float Stage = 1f;
   public float Health = 3f;
-  public float StagesToWin = 10f;
 
   public bool GameStarted = false;
+  public bool GameRunning = false;
   public bool Paused = false;
-  public bool Infinite = false;
 
   void Awake() {
     control = this;
   }
 
-  void Update()
-  {
-    if(Input.GetKeyDown("escape") && (GameStarted))
-    {
+  void Update() {
+    if(Input.GetKeyDown("return") && (!GameStarted)) {
+      GameStart();
+    }
+
+    if(Input.GetKeyDown("escape") && (GameRunning)) {
       PauseGame();
     }
-  }
 
-  void FixedUpdate() {
-    if(GameStarted) {
+    if(GameRunning) {
       OrbsText.text = "Orbs: " + Orbs + " of " + Stage;
-      if(Infinite) {
-        StageText.text = "Stage: " + Stage;
-      } else {
-        StageText.text = "Stage: " + Stage + " of " + StagesToWin;
-      }
+      StageText.text = "Stage: " + Stage;
       HealthText.text = "Health: " + Health;
     }
-    if(Orbs == Stage)
+
+    if(Orbs == Stage) {
       AdvanceStage();
-    if((Health == 0) && (GameStarted)){
+    }
+
+    if((Health == 0) && (GameRunning)) {
       GameOver();
     }
   }
@@ -66,26 +63,27 @@ public class GameController : MonoBehaviour
     yield return new WaitForSeconds(1f);
     StageText.text = "Get Ready!";
     yield return new WaitForSeconds(2f);
-    GameStarted = true;
+    GameRunning = true;
     Instantiate(Player, transform.position, transform.rotation);
     yield return new WaitForSeconds(0.5f);
     StartCoroutine(SpawnRings());
-    StopCoroutine(SetupGame());
   }
 
   void AdvanceStage() {
-    if((Stage == StagesToWin) && (!Infinite)) {
-      GameWin();
-    } else {
-      SoundEffectsManager.soundControl.StageClearedSound();
-      Stage += 1f;
-      Orbs = 0f;
-      StartCoroutine(SpawnRings());
+    SoundEffectsManager.soundControl.StageClearedSound();
+    Stage += 1f;
+    Orbs = 0f;
+    StartCoroutine(SpawnRings());
+  }
+
+  IEnumerator SpawnRings() {
+    for (int i = 0; i < Stage; i++) {
+      Instantiate(Enemy, transform.position, transform.rotation);
+      yield return new WaitForSeconds(0.5f);
     }
   }
 
-  public void PauseGame()
-  {
+  public void PauseGame() {
     if(!GameController.control.Paused) {
       GameController.control.Paused = true;
       Time.timeScale = 0;
@@ -99,30 +97,18 @@ public class GameController : MonoBehaviour
     }
   }
 
-  public void GameStartInfinite() {
-    GameStartScreen.SetActive(false);
-    Infinite = true;
-    SoundEffectsManager.soundControl.PauseSound();
-    StartCoroutine(SetupGame());
-
-  }
-  public void GameStartNormal() {
+  public void GameStart() {
+    GameStarted = true;
     GameStartScreen.SetActive(false);
     SoundEffectsManager.soundControl.PauseSound();
     StartCoroutine(SetupGame());
   }
 
   public void GameOver() {
-    GameStarted = false;
+    GameRunning = false;
     GameOverScreen.SetActive(true);
     GameOverScoreText.text = "Score: " + Stage;
     SoundEffectsManager.soundControl.GameOverSound();
-    Time.timeScale = 0;
-  }
-
-  public void GameWin() {
-    GameStarted = false;
-    GameWinScreen.SetActive(true);
     Time.timeScale = 0;
   }
 
@@ -132,11 +118,8 @@ public class GameController : MonoBehaviour
     Time.timeScale = 1;
   }
 
-  IEnumerator SpawnRings() {
-    for (int i = 0; i < Stage; i++) {
-      yield return new WaitForSeconds(1.5f);
-      Instantiate(Enemy, transform.position, transform.rotation);
-      yield return new WaitForSeconds(0.5f);
-    }
+  public void QuitGame() {
+    Application.Quit();
   }
+
 }
