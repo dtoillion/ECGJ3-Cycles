@@ -52,8 +52,7 @@ public class PlayerController : MonoBehaviour
         CameraShake.Shake(0.75f, 1.2f);
       } else {
         GameController.control.Orbs += 1f;
-        GameController.control.Score += 10;
-        SoundEffectsManager.soundControl.CollectOrbSound();
+        TotalScore.instance.UpdateTotalScore(10);
         Instantiate(OrbCollectedEffects, transform.position, Quaternion.identity);
         CameraShake.Shake(0.2f, 0.4f);
         Destroy(other.transform.parent.gameObject);

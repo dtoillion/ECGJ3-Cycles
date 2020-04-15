@@ -21,7 +21,6 @@ public class GameController : MonoBehaviour
   public GameObject Player;
 
   public float Orbs = 0f;
-  public int Score = 0;
   public int Stage = 1;
   public float Health = 3f;
 
@@ -41,7 +40,7 @@ public class GameController : MonoBehaviour
     }
 
     if(GameRunning) {
-      ScoreText.text = Score.ToString();
+      ScoreText.text = TotalScore.instance.totalScore.ToString();
       StageText.text = "Stage: " + Stage;
       HealthText.text = "Health: " + Health;
     }
@@ -57,7 +56,7 @@ public class GameController : MonoBehaviour
 
   IEnumerator SetupGame() {
     GameController.control.ReverseText.text = "Space to reverse";
-    ScoreText.text = Score.ToString();
+    ScoreText.text = TotalScore.instance.totalScore.ToString();
     HealthText.text = "Health: " + Health;
     StageText.text = "";
     yield return new WaitForSeconds(1f);
@@ -108,9 +107,9 @@ public class GameController : MonoBehaviour
 
   public void GameOver() {
     GameRunning = false;
-    HighScores.instance.AddNewHighScore(Username, Score, Stage);
+    HighScores.instance.AddNewHighScore(Username, TotalScore.instance.totalScore, Stage);
     GameOverScreen.SetActive(true);
-    GameOverScoreText.text = "Score: " + Score;
+    GameOverScoreText.text = "Score: " + TotalScore.instance.totalScore.ToString();
     SoundEffectsManager.soundControl.GameOverSound();
     Time.timeScale = 0;
   }

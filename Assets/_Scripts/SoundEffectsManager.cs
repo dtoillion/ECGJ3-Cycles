@@ -14,6 +14,12 @@ public class SoundEffectsManager : MonoBehaviour
     audioSrc = GetComponent<AudioSource>();
   }
 
+  void Update() {
+    if(TotalScore.instance.scoreMultiplier < 2) {
+      audioSrc.pitch = 1;
+    }
+  }
+
   public void GameOverSound(){
     audioSrc.clip = audioClips[0];
     audioSrc.PlayOneShot(audioSrc.clip, 1f);
@@ -23,6 +29,9 @@ public class SoundEffectsManager : MonoBehaviour
     audioSrc.PlayOneShot(audioSrc.clip, 1f);
   }
   public void CollectOrbSound(){
+    if(TotalScore.instance.scoreMultiplier >= 2) {
+      audioSrc.pitch += 0.1F;
+    }
     audioSrc.clip = audioClips[2];
     audioSrc.PlayOneShot(audioSrc.clip, 1f);
   }

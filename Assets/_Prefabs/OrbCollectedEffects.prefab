@@ -9568,6 +9568,7 @@ GameObject:
   - component: {fileID: 2937316361328537270}
   - component: {fileID: 7566424947262411850}
   - component: {fileID: 82606223}
+  - component: {fileID: 7246906533713516068}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -9636,7 +9637,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 995675092766859871}
-  m_Text: Orb Collected!
+  m_Text: +10
   m_OffsetZ: 0
   m_CharacterSize: 0.3
   m_LineSpacing: 1
@@ -9669,3 +9670,15 @@ MonoBehaviour:
     value: {x: 0, y: 3, z: 0}
     space: 0
   ignoreTimescale: 0
+--- !u!114 &7246906533713516068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 995675092766859871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00632b87d97060341894916894b00607, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

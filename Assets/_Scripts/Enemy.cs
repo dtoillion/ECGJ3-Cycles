@@ -32,15 +32,15 @@ public class Enemy : MonoBehaviour
   IEnumerator SpawnSafe()
   {
     rend.material.color = spawnColorA;
-    yield return new WaitForSeconds(0.3f);
+    yield return new WaitForSeconds(0.15f);
     rend.material.color = spawnColorB;
-    yield return new WaitForSeconds(0.3f);
+    yield return new WaitForSeconds(0.15f);
     rend.material.color = spawnColorA;
-    yield return new WaitForSeconds(0.3f);
+    yield return new WaitForSeconds(0.15f);
     rend.material.color = spawnColorB;
-    yield return new WaitForSeconds(0.3f);
+    yield return new WaitForSeconds(0.15f);
     rend.material.color = spawnColorA;
-    yield return new WaitForSeconds(0.3f);
+    yield return new WaitForSeconds(0.15f);
     Dangerous = true;
     sC.enabled = true;
     StopCoroutine(SpawnSafe());
