@@ -8,20 +8,24 @@ public class GameController : MonoBehaviour
 {
   public static GameController control = null;
   public Text HealthText;
-  public Text OrbsText;
+  public Text ScoreText;
   public Text StageText;
   public Text ReverseText;
   public Text GameOverScoreText;
 
-  public GameObject MainMenuScreen;
+  public GameObject EscapeMenuScreen;
   public GameObject GameOverScreen;
+  public GameObject HighScoreScreen;
   public GameObject GameStartScreen;
   public GameObject Enemy;
   public GameObject Player;
 
   public float Orbs = 0f;
-  public float Stage = 1f;
+  public int Score = 0;
+  public int Stage = 1;
   public float Health = 3f;
+
+  public string Username = "";
 
   public bool GameStarted = false;
   public bool GameRunning = false;
@@ -32,16 +36,12 @@ public class GameController : MonoBehaviour
   }
 
   void Update() {
-    if(Input.GetKeyDown("return") && (!GameStarted)) {
-      GameStart();
-    }
-
     if(Input.GetKeyDown("escape") && (GameRunning)) {
       PauseGame();
     }
 
     if(GameRunning) {
-      OrbsText.text = "Orbs: " + Orbs + " of " + Stage;
+      ScoreText.text = Score.ToString();
       StageText.text = "Stage: " + Stage;
       HealthText.text = "Health: " + Health;
     }
@@ -57,7 +57,7 @@ public class GameController : MonoBehaviour
 
   IEnumerator SetupGame() {
     GameController.control.ReverseText.text = "Space to reverse";
-    OrbsText.text = "Orbs: " + Orbs + " of " + Stage;
+    ScoreText.text = Score.ToString();
     HealthText.text = "Health: " + Health;
     StageText.text = "";
     yield return new WaitForSeconds(1f);
@@ -71,7 +71,7 @@ public class GameController : MonoBehaviour
 
   void AdvanceStage() {
     SoundEffectsManager.soundControl.StageClearedSound();
-    Stage += 1f;
+    Stage += 1;
     Orbs = 0f;
     StartCoroutine(SpawnRings());
   }
@@ -88,16 +88,18 @@ public class GameController : MonoBehaviour
       GameController.control.Paused = true;
       Time.timeScale = 0;
       SoundEffectsManager.soundControl.PauseSound();
-      MainMenuScreen.SetActive(true);
+      EscapeMenuScreen.SetActive(true);
     } else {
       GameController.control.Paused = false;
       Time.timeScale = 1;
       SoundEffectsManager.soundControl.PauseSound();
-      MainMenuScreen.SetActive(false);
+      EscapeMenuScreen.SetActive(false);
     }
   }
 
   public void GameStart() {
+    Username = PlayerPrefs.GetString("Name", "UNDEFINED");
+    HighScoreScreen.SetActive(false);
     GameStarted = true;
     GameStartScreen.SetActive(false);
     SoundEffectsManager.soundControl.PauseSound();
@@ -106,8 +108,9 @@ public class GameController : MonoBehaviour
 
   public void GameOver() {
     GameRunning = false;
+    HighScores.instance.AddNewHighScore(Username, Score, Stage);
     GameOverScreen.SetActive(true);
-    GameOverScoreText.text = "Score: " + Stage;
+    GameOverScoreText.text = "Score: " + Score;
     SoundEffectsManager.soundControl.GameOverSound();
     Time.timeScale = 0;
   }
@@ -120,6 +123,16 @@ public class GameController : MonoBehaviour
 
   public void QuitGame() {
     Application.Quit();
+  }
+
+  public void ShowHighscores() {
+    SoundEffectsManager.soundControl.PauseSound();
+    if(!HighScoreScreen.active) {
+      HighScores.instance.DownloadHighscores();
+      HighScoreScreen.SetActive(true);
+    } else {
+      HighScoreScreen.SetActive(false);
+    }
   }
 
 }

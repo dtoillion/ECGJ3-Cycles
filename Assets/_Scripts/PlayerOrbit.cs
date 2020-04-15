@@ -50,6 +50,5 @@ public class PlayerOrbit : MonoBehaviour
     yield return new WaitForSeconds(1f);
     GameController.control.ReverseText.text = "Reverse Ready";
     CooledDown = true;
-    StopCoroutine(RotateDirectionCooldown());
   }
 }
