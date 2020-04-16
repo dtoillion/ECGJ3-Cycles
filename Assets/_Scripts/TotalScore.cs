@@ -20,11 +20,11 @@ public class TotalScore : MonoBehaviour
   }
 
   public void UpdateTotalScore(int amountToAdd) {
-    StopCoroutine(MultiplierReset());
+    StopCoroutine("MultiplierReset");
     totalScore += (amountToAdd * scoreMultiplier);
     SoundEffectsManager.soundControl.CollectOrbSound();
     scoreMultiplier += 1;
-    StartCoroutine(MultiplierReset());
+    StartCoroutine("MultiplierReset");
   }
 
   IEnumerator MultiplierReset() {

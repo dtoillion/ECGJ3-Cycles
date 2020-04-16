@@ -9,51 +9,42 @@ public class Enemy : MonoBehaviour
   public Color spawnColorA;
   public Color spawnColorB;
   public bool Dangerous;
-  private Collider sC;
+  private Collider enemyCollider;
   Renderer rend;
 
   void Start()
   {
     rend = GetComponent<Renderer> ();
-    sC = GetComponent<Collider> ();
-    sC.enabled = false;
+    enemyCollider = GetComponent<Collider> ();
+    enemyCollider.enabled = false;
     Dangerous = false;
     SoundEffectsManager.soundControl.SpawnSound();
     StartCoroutine(SpawnSafe());
   }
 
   IEnumerator DangerCooldown() {
-    sC.enabled = false;
+    enemyCollider.enabled = false;
     yield return new WaitForSeconds(1f);
-    sC.enabled = true;
+    enemyCollider.enabled = true;
     StopCoroutine(DangerCooldown());
   }
 
   IEnumerator SpawnSafe()
   {
-    rend.material.color = spawnColorA;
-    yield return new WaitForSeconds(0.15f);
-    rend.material.color = spawnColorB;
-    yield return new WaitForSeconds(0.15f);
-    rend.material.color = spawnColorA;
-    yield return new WaitForSeconds(0.15f);
-    rend.material.color = spawnColorB;
-    yield return new WaitForSeconds(0.15f);
-    rend.material.color = spawnColorA;
-    yield return new WaitForSeconds(0.15f);
+    for (int i = 0; i < 2; i++) {
+      rend.material.color = spawnColorA;
+      yield return new WaitForSeconds(0.15f);
+      rend.material.color = spawnColorB;
+      yield return new WaitForSeconds(0.15f);
+    }
     Dangerous = true;
-    sC.enabled = true;
-    StopCoroutine(SpawnSafe());
+    enemyCollider.enabled = true;
   }
 
   void OnTriggerEnter(Collider other) {
     if((other.gameObject.tag == "Player") && (Dangerous)) {
       StartCoroutine(DangerCooldown());
     }
-  }
-
-  void OnTriggerStay(Collider other)
-  {
     if ((other.gameObject.tag == "NightTime") && (Dangerous))
       rend.material.color = nightColor;
     if ((other.gameObject.tag == "DayTime") && (Dangerous))

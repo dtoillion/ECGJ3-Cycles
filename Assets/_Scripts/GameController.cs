@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour
   public GameObject GameOverScreen;
   public GameObject HighScoreScreen;
   public GameObject GameStartScreen;
+  public GameObject GameHintsScreen;
   public GameObject Enemy;
   public GameObject Player;
 
@@ -34,6 +35,10 @@ public class GameController : MonoBehaviour
     control = this;
   }
 
+  void Start() {
+    GameStartScreen.SetActive(true);
+  }
+
   void Update() {
     if(Input.GetKeyDown("escape") && (GameRunning)) {
       PauseGame();
@@ -49,29 +54,30 @@ public class GameController : MonoBehaviour
       AdvanceStage();
     }
 
-    if((Health == 0) && (GameRunning)) {
+    if((Health <= 0) && (GameRunning)) {
       GameOver();
     }
   }
 
   IEnumerator SetupGame() {
-    GameController.control.ReverseText.text = "Space to reverse";
+    GameBoard.instance.DayNightCycle();
+    StageText.text = "";
+    ReverseText.text = "";
     ScoreText.text = TotalScore.instance.totalScore.ToString();
     HealthText.text = "Health: " + Health;
-    StageText.text = "";
-    yield return new WaitForSeconds(1f);
-    StageText.text = "Get Ready!";
-    yield return new WaitForSeconds(2f);
     GameRunning = true;
     Instantiate(Player, transform.position, transform.rotation);
-    yield return new WaitForSeconds(0.5f);
+    yield return new WaitForSeconds(1f);
     StartCoroutine(SpawnRings());
+    yield return new WaitForSeconds(6f);
+    GameHintsScreen.SetActive(false);
   }
 
   void AdvanceStage() {
     SoundEffectsManager.soundControl.StageClearedSound();
     Stage += 1;
     Orbs = 0f;
+    GameBoard.instance.DayNightCycle();
     StartCoroutine(SpawnRings());
   }
 
@@ -83,13 +89,13 @@ public class GameController : MonoBehaviour
   }
 
   public void PauseGame() {
-    if(!GameController.control.Paused) {
-      GameController.control.Paused = true;
+    if(!Paused) {
+      Paused = true;
       Time.timeScale = 0;
       SoundEffectsManager.soundControl.PauseSound();
       EscapeMenuScreen.SetActive(true);
     } else {
-      GameController.control.Paused = false;
+      Paused = false;
       Time.timeScale = 1;
       SoundEffectsManager.soundControl.PauseSound();
       EscapeMenuScreen.SetActive(false);
@@ -99,9 +105,10 @@ public class GameController : MonoBehaviour
   public void GameStart() {
     Username = PlayerPrefs.GetString("Name", "UNDEFINED");
     HighScoreScreen.SetActive(false);
-    GameStarted = true;
     GameStartScreen.SetActive(false);
+    GameHintsScreen.SetActive(true);
     SoundEffectsManager.soundControl.PauseSound();
+    GameStarted = true;
     StartCoroutine(SetupGame());
   }
 

@@ -43,11 +43,11 @@ public class PlayerOrbit : MonoBehaviour
   IEnumerator RotateDirectionCooldown()
   {
     GameController.control.ReverseText.text = "3";
-    yield return new WaitForSeconds(1f);
+    yield return new WaitForSeconds(0.4F);
     GameController.control.ReverseText.text = "2";
-    yield return new WaitForSeconds(1f);
+    yield return new WaitForSeconds(0.4F);
     GameController.control.ReverseText.text = "1";
-    yield return new WaitForSeconds(1f);
+    yield return new WaitForSeconds(0.4F);
     GameController.control.ReverseText.text = "Reverse Ready";
     CooledDown = true;
   }

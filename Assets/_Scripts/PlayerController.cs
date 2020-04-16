@@ -29,17 +29,30 @@ public class PlayerController : MonoBehaviour
 
   void Update()
   {
-    if(Input.GetKeyDown("up") && (moveCount <= 3) && (!GameController.control.Paused))
-    {
-      moveCount += 1;
-      SoundEffectsManager.soundControl.PlayerUpSound();
-      transform.Translate(0f, 0f, 3f);
+    if(GameController.control.GameRunning && !GameController.control.Paused) {
+      if(Input.GetKeyDown("up") && (moveCount <= 3))
+      {
+        moveCount += 1;
+        SoundEffectsManager.soundControl.PlayerUpSound();
+        transform.Translate(0f, 0f, 3f);
+      }
+      if(Input.GetKeyDown("down") && (moveCount > 0))
+      {
+        moveCount -= 1;
+        SoundEffectsManager.soundControl.PlayerDownSound();
+        transform.Translate(0f, 0f, -3f);
+      }
     }
-    if(Input.GetKeyDown("down") && (moveCount > 0) && (!GameController.control.Paused))
-    {
-      moveCount -= 1;
-      SoundEffectsManager.soundControl.PlayerDownSound();
-      transform.Translate(0f, 0f, -3f);
+  }
+
+  void OnTriggerStay(Collider other) {
+    if(other.gameObject.tag == "NightTime") {
+      rend.material.color = nightColor;
+      Nightime = true;
+    }
+    if(other.gameObject.tag == "DayTime") {
+      rend.material.color = dayColor;
+      Nightime = false;
     }
   }
 
@@ -57,17 +70,6 @@ public class PlayerController : MonoBehaviour
         CameraShake.Shake(0.2f, 0.4f);
         Destroy(other.transform.parent.gameObject);
       }
-    }
-  }
-
-  void OnTriggerStay(Collider other) {
-    if(other.gameObject.tag == "NightTime") {
-      rend.material.color = nightColor;
-      Nightime = true;
-    }
-    if(other.gameObject.tag == "DayTime") {
-      rend.material.color = dayColor;
-      Nightime = false;
     }
   }
 
