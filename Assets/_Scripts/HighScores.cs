@@ -26,6 +26,8 @@ public class HighScores : MonoBehaviour
       Platform = "Linux";
     } else if (Application.platform == RuntimePlatform.WebGLPlayer) {
       Platform = "Web Browser";
+    } else if (Application.platform == RuntimePlatform.OSXPlayer) {
+      Platform = "MacOS";
     } else {
       Platform = "Dev Mode";
     }
